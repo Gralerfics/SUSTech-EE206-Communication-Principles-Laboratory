@@ -1,0 +1,28 @@
+MT Generate System Parameters:
+Calculates parameters for use with modulation and demodulation VIs. The system parameters cluster from this VI wires to the corresponding parameter of the appropriate demodulation or modulation VI.
+
+MT Generate Bits:
+Generates the sequence of data bits to be modulated. This polymorphic VI can generate Fibonacci or Galois pseudonoise (PN) bit sequences. It can also generate bit sequences based on a user-defined pattern. The selected pattern is repeated until the user-specified number of total bits is generated.
+
+MT Generate Filter Coefficients:
+Calculates filter coefficients for pulse-shaping and matched filters applied by the digital modulation VIs and demodulation VIs. 
+
+MT Modulate PSK:
+Receives a sequence of data bits, performs PSK modulation, and returns the modulated complex baseband waveform in the output complex waveform parameter.
+
+MT Add AWGN:
+Generates zero-mean complex additive white Gaussian noise (AWGN) with uniform power spectral density and adds it to the complex baseband modulated waveform.
+This VI returns a signal–plus–noise waveform with a user-specified Eb/N0, where Eb represents the energy per bit, and N0 represents the noise variance.
+
+MT Demodulate PSK:
+Demodulates a PSK-modulated complex baseband waveform and returns the time-aligned oversampled complex waveform, the demodulated bit stream, and measurement results obtained during demodulation. This VI attempts to remove carrier and phase offset by locking to the carrier signal.
+
+MT Generate Synchronization Parameters:
+Constructs an FSK, PSK, QAM, MSK, PAM, ASK, or CPM synchronization parameters cluster that you can pass to a demodulation VI, using an array of either synchronization bits or synchronization numbers. The generated synchronization parameters cluster avoids phase ambiguity at the demodulator, thus allowing recovery of the actual message bits.
+If the synchronization parameter passed to the demodulation VI is left empty, the constellation of the demodulated waveform has a 90° carrier phase ambiguity for two-dimensional modulation schemes (QAM, QPSK and higher order PSK) and a 180° carrier phase ambiguity for one-dimensional modulation schemes (PAM/ASK/BPSK).
+
+MT Format Eye Diagram:
+Specifies a complex- or real-valued waveform, divides it into segments, and displays those segments as plots on a waveform graph. This VI determines the segment length based on the symbol rate and eye length parameters. 
+
+MT Format Constellation:
+Prepares a signal for presentation on a graph showing the detected symbol locations and the transitions between those symbols. The VI specifies a complex-valued waveform and displays a constellation plot of the waveform contents.
