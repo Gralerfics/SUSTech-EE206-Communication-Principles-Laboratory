@@ -1,0 +1,17 @@
+Enqueue Element Function:
+Adds an element to the back of a queue.
+If the queue is full, the function waits timeout in ms before timing out. If space becomes available in the queue during the wait, the function inserts the element and timed out? is FALSE. If queue becomes invalid such as when you release the queue reference, the function stops waiting and returns error code 1122.
+
+Dequeue Element Function:
+Removes an element from the front of a queue and returns the element.
+If the queue is empty, the function waits timeout in ms before timing out. If an element becomes available in the queue during the wait, the function removes and returns the element and timed out? is FALSE. If queue becomes invalid (for example, the queue reference is released), the function stops waiting and returns error code 1122.
+
+Obtain Queue Function:
+Returns a reference to a queue.
+Use this reference when calling other Queue Operations functions.
+When you enqueue and dequeue resizable data types, such as paths, strings and arrays, you do not affect the memory used by queues. Queues transfer data, but do not generate copies of the data. Use the Lossy Enqueue Element function if you are concerned that elements waiting to enter an already-full queue might cause jitter in a deterministic loop.
+Use named queues to pass data between two sections of a block diagram or between two VIs in the same application instance. If you do not wire name, the function creates a new, unnamed queue reference. If you wire name, the function searches for an existing queue with the same name and returns a new reference to the existing queue. If a queue with the same name does not already exist and create if not found? is TRUE, the function creates a new, named queue reference.
+If you use the Obtain Queue function to return a reference to a named queue inside a loop, LabVIEW creates a new reference to the named queue each time the loop iterates. If you use Obtain Queue in a tight loop, LabVIEW slowly increases how much memory it uses because each new reference uses an additional four bytes. These bytes are released automatically when the VI stops running. However, in a long-running application it may appear as if LabVIEW is leaking memory since the memory usage keeps increasing. To prevent this unintended memory allocation, use the Release Queue function in the loop to release the queue reference for each iteration.
+
+niUSRP Configure Signal VI:
+Configures properties of the transmit (Tx) or receive (Rx) signal.
